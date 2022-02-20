@@ -13,22 +13,28 @@ const Question = ({ question, quizId, setRecord }) => {
     setRecord(newRecord);
   };
   return (
-    <li>
+    <li className="mb-4">
       <h4>{question.question}</h4>
       {question.answers.map((option, index) => {
         return (
-          <div key={index}>
+          <div key={index} className="form-check">
             <input
               type="radio"
               id={`${question.id}-${index}`}
               name={`${quizId}-${question.id}`}
+              className="form-check-input"
               value={index}
               onChange={handleChange}
               checked={
                 answers[`${quizId}-${question.id}`] === index ? true : false
               }
             />
-            <label htmlFor={`${question.id}-${index}`}>{option}</label>
+            <label
+              htmlFor={`${question.id}-${index}`}
+              className="form-check-label"
+            >
+              {option}
+            </label>
           </div>
         );
       })}

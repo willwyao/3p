@@ -12,6 +12,7 @@ const Quiz = ({ quizzes, questions, record, setRecord }) => {
   const isFinished =
     finishedQuestions === quiz.question_ids.length ? true : false;
 
+  //submit current quiz, calculate the score, and move to next page
   const submitQuiz = () => {
     let score = 0;
     const currentAnswerIds = Object.keys(record.answers).filter((key) =>
@@ -37,31 +38,37 @@ const Quiz = ({ quizzes, questions, record, setRecord }) => {
 
   return (
     <div className="container">
-      <h1>{quiz.title}</h1>
-      <p>
-        Please answer all questions below, then click the button to continue.
-      </p>
-      <form>
-        <ul>
-          {quiz.question_ids.map((questionId) => {
-            return (
-              <Question
-                key={questionId}
-                question={questions[questionId]}
-                quizId={quiz.id}
-                setRecord={setRecord}
-                record={record}
-              />
-            );
-          })}
-        </ul>
-
-        {isFinished && (
-          <button className="btn btn-primary" onClick={submitQuiz}>
-            Submit
-          </button>
-        )}
-      </form>
+      <div className="row justify-content-center">
+        <div className="col-sm-12 col-md-10 col-lg-6 py-4">
+          <h1 className="text-center">{quiz.title}</h1>
+          <p>
+            Please answer all questions below, then click the button to
+            continue.
+          </p>
+          <form>
+            <ul className="list-unstyled">
+              {quiz.question_ids.map((questionId) => {
+                return (
+                  <Question
+                    key={questionId}
+                    question={questions[questionId]}
+                    quizId={quiz.id}
+                    setRecord={setRecord}
+                    record={record}
+                  />
+                );
+              })}
+            </ul>
+            <div className="text-center">
+              {isFinished && (
+                <button className="btn btn-primary" onClick={submitQuiz}>
+                  Submit
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,10 +1,10 @@
-import "./App.css";
 import quizzesJSON from "./data/quizzes.json";
 import questionsJSON from "./data/questions.json";
 import React from "react";
 import Start from "./pages/Start";
 import Finish from "./pages/Finish";
 import Quiz from "./pages/Quiz";
+import ProgressBar from "./components/ProgressBar";
 
 const initState = { progress: -1, answers: {}, scores: {} };
 const quizzes = quizzesJSON.quizzes;
@@ -45,6 +45,7 @@ function App() {
           setRecord={setRecord}
         />
       )}
+      {progress > 0 && <ProgressBar progress={progress} amount={amount} />}
     </div>
   );
 }
