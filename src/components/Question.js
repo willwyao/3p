@@ -1,7 +1,6 @@
 import React from "react";
 
-const Question = ({ question, quizId, setRecord }) => {
-  const record = JSON.parse(localStorage.getItem("record"));
+const Question = ({ question, quizId, record, setRecord }) => {
   const answers = record.answers;
   const handleChange = (e) => {
     const newAnswers = {

@@ -13,7 +13,8 @@ const Quiz = ({ quizzes, questions, record, setRecord }) => {
     finishedQuestions === quiz.question_ids.length ? true : false;
 
   //submit current quiz, calculate the score, and move to next page
-  const submitQuiz = () => {
+  const submitQuiz = (e) => {
+    e.preventDefault();
     let score = 0;
     const currentAnswerIds = Object.keys(record.answers).filter((key) =>
       key.startsWith(quiz.id)
