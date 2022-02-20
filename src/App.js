@@ -38,7 +38,12 @@ function App() {
       ) : progress === amount ? (
         <Finish quizzes={quizzes} record={record} reset={reset} />
       ) : (
-        <Quiz />
+        <Quiz
+          quizzes={quizzes}
+          questions={questionsObj}
+          record={record}
+          setRecord={setRecord}
+        />
       )}
     </div>
   );
